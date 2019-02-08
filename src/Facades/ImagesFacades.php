@@ -1,35 +1,52 @@
 <?php
 namespace Baki\Gallery\Facades;
+
 use File;
 use Image;
-use App\Gallery;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Input; 
 use Illuminate\Support\Facades\Facade;
 /**
  * @see \Mews\Purifier
  */
-class GalleryFacades extends Facade
+class ImagesFacades extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'StoreGallery';
+        return 'StoreImages';
     }
-    protected static function storeImage($nameOfInput, $location, $r, $defaultPictures, $edit = false, $imageOld = '')
+    protected static function storeImage($nameOfInput, $path, $r, $defaultPictures, $w = false, $h=false)
+    {
+        if ($r->hasFile($nameOfInput)) 
+        {
+            $image = $r->file($nameOfInput);
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path($path.$name);
+            if (Image::make($image)->fit($w, $h)->save($location)) 
+            {
+                return $location.$name;
+            }           
+        }
+        else
+        {
+            return $defaultPictures;
+        }
+    }
+    protected static function updateImage($nameOfInput, $path, $r, $imageOld = '', $w = false, $h=false)
     {
         if ($r->hasFile($nameOfInput)) 
         {
             $image = $r->file($nameOfInput);
             $name = time().'.'.$image->getClientOriginalExtension();
             $location = public_path($location.$name);
-            if (Image::make($image)->fit(790, 440)->save($location)) 
+            if (Image::make($image)->fit($w, $h)->save($location)) 
             {
-                ($edit) ? (($imageOld != NULL && $imageOld != $defaultPictures) ? File::delete($imageOld) : "") : "";
+                ($imageOld != NULL && $imageOld != $defaultPictures) ? (File::delete($imageOld)) : "";
                 return $lokacija.$name;
             }           
-        }else
+        }
+        else
         {
-            return $edit ? $imageOld : $defaultPictures;
+            return $imageOld;
         }
     }
 }
