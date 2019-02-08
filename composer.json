@@ -29,7 +29,7 @@
                 "Baki\\Image\\ImageServiceProvider"
             ],
             "aliases": {
-                "StoreImage": "Baki\\Image\\Facade\\ImageFacades"
+                "StoreImage": "Baki\\Image\\Facades\\ImageFacades"
             }
         }
     }
