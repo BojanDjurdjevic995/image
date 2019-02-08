@@ -1,7 +1,7 @@
 <?php
-namespace Baki\Images;
+namespace Baki\Image;
 use Illuminate\Support\ServiceProvider;
-class ImagesServiceProvider extends ServiceProvider
+class ImageServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -23,6 +23,6 @@ class ImagesServiceProvider extends ServiceProvider
     }
     public function provides()
     {
-        return ['StoreImages'];
+        return ['StoreImage'];
     }
 }
