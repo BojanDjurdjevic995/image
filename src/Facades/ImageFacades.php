@@ -1,5 +1,5 @@
 <?php
-namespace Baki\Gallery\Facades;
+namespace Baki\Image\Facades;
 
 use File;
 use Image;
@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @see \Mews\Purifier
  */
-class ImagesFacades extends Facade
+class ImageFacades extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'StoreImages';
+        return 'StoreImage';
     }
     protected static function storeImage($nameOfInput, $path, $r, $defaultPictures, $w = false, $h=false)
     {
