@@ -1,0 +1,36 @@
+{
+    "name": "baki/image",
+    "description": "Store image",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Bojan Djurdjevic",
+            "email": "djurdjevicbojan12@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "classmap": [
+            "/"
+        ],
+        "psr-4": {
+            "\\": "/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "\\": "/src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Baki\\Images\\ImagesServiceProvider"
+            ],
+            "aliases": {
+                "StoreImages": "Baki\\Images\\Facades\\ImagesFacades"
+            }
+        }
+    }
+}
