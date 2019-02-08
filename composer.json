@@ -26,10 +26,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Baki\\Images\\ImagesServiceProvider"
+                "Baki\\Image\\ImageServiceProvider"
             ],
             "aliases": {
-                "StoreImages": "Baki\\Images\\Facades\\ImagesFacades"
+                "StoreImage": "Baki\\Image\\Facade\\ImageFacades"
             }
         }
     }
