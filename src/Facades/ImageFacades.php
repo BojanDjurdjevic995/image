@@ -5,25 +5,23 @@ use File;
 use Image;
 use Illuminate\Support\Facades\Input; 
 use Illuminate\Support\Facades\Facade;
-/**
- * @see \Mews\Purifier
- */
+
 class ImageFacades extends Facade
 {
     protected static function getFacadeAccessor()
     {
         return 'StoreImage';
     }
-    protected static function storeImage($nameOfInput, $path, $r, $defaultPictures, $w = false, $h=false)
+    protected static function storeImage($nameOfInput, $path, $r, $defaultPictures, $width = false, $height = false)
     {
         if ($r->hasFile($nameOfInput)) 
         {
             $image = $r->file($nameOfInput);
-            $name = time().'.'.$image->getClientOriginalExtension();
-            $location = public_path($path.$name);
-            if (Image::make($image)->fit($w, $h)->save($location)) 
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path($path . '' . $name);
+            if (Image::make($image)->fit($width, $height)->save($location)) 
             {
-                return $location.$name;
+                return $location . '' . $name;
             }           
         }
         else
@@ -36,12 +34,12 @@ class ImageFacades extends Facade
         if ($r->hasFile($nameOfInput)) 
         {
             $image = $r->file($nameOfInput);
-            $name = time().'.'.$image->getClientOriginalExtension();
-            $location = public_path($location.$name);
-            if (Image::make($image)->fit($w, $h)->save($location)) 
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path($path . '' . $name);
+            if (Image::make($image)->fit($width, $height)->save($location)) 
             {
                 ($imageOld != NULL && $imageOld != $defaultPictures) ? (File::delete($imageOld)) : "";
-                return $lokacija.$name;
+                return $location . '' . $name;
             }           
         }
         else
