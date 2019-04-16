@@ -1,3 +1,7 @@
+Before install this package, you must install Intervention Image
+```
+composer.phar require intervention/image
+```
 Require this package with composer:
 ```
 composer require baki/image
