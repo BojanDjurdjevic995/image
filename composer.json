@@ -2,6 +2,7 @@
     "name": "baki/image",
     "description": "Store image",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Bojan Djurdjevic",
