@@ -44,3 +44,23 @@ public function store(Request $r)
     return redirect()->route('news.index'); // This is my route. You can use your route.
 }
 ```
+
+If you want to edit your news. Old pictures will be delete, but default pictures will not be delete
+Follow command:
+```
+// Function to update your news and pictures
+public function update(Request $r, News $news)
+{
+    // This is witout fit image and you must enter false, false to nocrop image and true to edit news.
+    // 
+    $news->image = StoreImage::store('your_name_for_input', 'yourDisk', $request, 'default-pictures.jpg', false, false, true, $news->old_image_from_database);
+    
+    // This is with fit image
+    $news->image = StoreImage::store('your_name_for_input', 'yourDisk', $request, 'default-pictures.jpg', 450, 430, true, $news->old_image_from_database);
+    
+    // First number is for width and second number is for height
+    
+    $news->save();
+    return redirect()->route('news.index'); // This is my route. You can use your route.
+}
+```
