@@ -6,7 +6,7 @@ Require this package with composer:
 ```
 composer require baki/image
 ```
-#Usage
+# Usage
 For use Image package you must use this in our controller
 ```
 use StoreImage;
@@ -20,7 +20,7 @@ After that, you must create your disk in config/filesystems.php
             'visibility' => 'public',
         ],
 ```
-#Example
+# Example
 If you want to save your pictures (eg. for you News) and get name of pictures
 Follow this command:
 ```
