@@ -2,6 +2,7 @@
 namespace Baki\Image\Facades;
 
 use Image;
+use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Storage;
 
 class ImageFacades extends Facade
