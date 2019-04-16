@@ -11,7 +11,7 @@ class ImageFacades extends Facade
     {
         return 'StoreImage';
     }
-    protected static function storeImage($input_file, $storage_disk, $request, $defaultPictures, $width = false, $height = false, $edit = false, $imageOld = '')
+    protected static function store($input_file, $storage_disk, $request, $defaultPictures, $width = false, $height = false, $edit = false, $imageOld = '')
     {
         if ($request->hasFile($input_file)) 
         {
