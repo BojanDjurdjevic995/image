@@ -11,7 +11,7 @@ To use Image package, use this in your controller
 ```
 use StoreImage;
 ```
-After that, you must create your disk in config/filesystems.php
+After that, create your disk in config/filesystems.php
 ```
 'yourDisk' => [
             'driver' => 'local',
