@@ -1,4 +1,4 @@
-Before install this package, you must install Intervention Image
+Before installing this package, you must install Intervention Image
 ```
 composer require intervention/image
 ```
@@ -7,7 +7,7 @@ Require this package with composer:
 composer require baki/image
 ```
 # Usage
-For use Image package you must use this in our controller
+To use Image package, use this in your controller
 ```
 use StoreImage;
 ```
@@ -21,7 +21,7 @@ After that, you must create your disk in config/filesystems.php
         ],
 ```
 # Example
-If you want to save your pictures (eg. for you News) and get name of pictures
+If you want to save your pictures (eg. for your News) and get the name of those pictures
 Follow this command:
 ```
 {{-- Input in laravel blade --}}
@@ -32,11 +32,11 @@ public function store(Request $r)
 {
     $input = new News;
     
-    // This is witout fit image
-    $input->image = StoreImage::store('your_name_for_input', 'yourDisk', $request, 'default-pictures.jpg');
+    // It is without crop image
+    $input->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg');
     
-    // This is with fit image
-    $input->image = StoreImage::store('your_name_for_input', 'yourDisk', $request, 'default-pictures.jpg', 450, 430);
+    // It is with crop image
+    $input->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', 450, 430);
     
     // First number is for width and second number is for height
     
@@ -48,19 +48,20 @@ public function store(Request $r)
 If you want to edit your news. Old pictures will be delete, but default pictures will not be delete
 Follow command:
 ```
+$news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', 'width', 'height', true(for edit), $news->old_image_from_database(enter if the previous parameter is true));
+
 // Function to update your news and pictures
 public function update(Request $r, News $news)
 {
-    // This is witout fit image and you must enter false, false to nocrop image and true to edit news.
-    // 
-    $news->image = StoreImage::store('your_name_for_input', 'yourDisk', $request, 'default-pictures.jpg', false, false, true, $news->old_image_from_database);
+    // It is without crop image and you must enter 'false, false' to no crop image and true to edit news.
+    $news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', false, false, true, $news->old_image_from_database);
     
-    // This is with fit image
-    $news->image = StoreImage::store('your_name_for_input', 'yourDisk', $request, 'default-pictures.jpg', 450, 430, true, $news->old_image_from_database);
+    // It is with crop image
+    $news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', 'width', 'height', true, $news->old_image_from_database);
     
     // First number is for width and second number is for height
     
     $news->save();
-    return redirect()->route('news.index'); // This is my route. You can use your route.
+    return redirect()->route('news.index'); // It is my route. You can use your route.
 }
 ```
