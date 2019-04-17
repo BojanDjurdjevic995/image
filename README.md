@@ -53,7 +53,7 @@ $news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'defau
 // Function to update your news and pictures
 public function update(Request $r, News $news)
 {
-    // It is without crop image and you must enter 'false, false' to no crop image and true to edit news.
+    // It is without crop image and you must enter 'false, false' to no crop image and 'true' to edit news.
     $news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', false, false, true, $news->old_image_from_database);
     
     // It is with crop image
