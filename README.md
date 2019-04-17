@@ -1,4 +1,4 @@
-Before installing this package, you must install Intervention Image
+Before installing this package, install Intervention Image
 ```
 composer require intervention/image
 ```
