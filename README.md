@@ -45,7 +45,7 @@ public function store(Request $r)
 }
 ```
 
-If you want to edit your news. Old pictures will be delete, but default pictures will not be delete
+If you want to edit your news. Old pictures will be delete, but default pictures will not be delete <br/>
 Follow command:
 ```
 $news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', 'width', 'height', true(for edit), $news->old_image_from_database(enter if the previous parameter is true));
