@@ -21,7 +21,7 @@ After that, create your disk in config/filesystems.php
         ],
 ```
 # Example
-If you want to save your pictures (eg. for your News) and get the name of those pictures \n
+If you want to save your pictures (eg. for your News) and get the name of those pictures <br/>
 Follow this command:
 ```
 {{-- Input in laravel blade --}}
