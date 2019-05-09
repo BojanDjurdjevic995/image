@@ -36,7 +36,7 @@ public function store(Request $r)
     $input->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg');
     
     // It is with crop image
-    $input->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', 450, 430);
+    $input->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', false, '', 100, 100);
     
     // First number is for width and second number is for height
     
@@ -48,18 +48,16 @@ public function store(Request $r)
 If you want to edit your news. Old pictures will be delete, but default pictures will not be delete <br/>
 Follow command:
 ```
-$news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', 'width', 'height', true(for edit), $news->old_image_from_database(enter if the previous parameter is true));
+$news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', true(for edit), $news->old_image_from_database(enter if the previous parameter is true), 'width', 'height');
 
 // Function to update your news and pictures
 public function update(Request $r, News $news)
 {
-    // It is without crop image and you must enter 'false, false' to no crop image and 'true' to edit news.
-    $news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', false, false, true, $news->old_image_from_database);
+    // It is without crop image
+    $news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', true, $news->old_image_from_database);
     
     // It is with crop image
-    $news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', 'width', 'height', true, $news->old_image_from_database);
-    
-    // First number is for width and second number is for height
+    $news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', true, $news->old_image_from_database, 'width', 'height');
     
     $news->save();
     return redirect()->route('news.index'); // It is my route. You can use your route.
