@@ -27,6 +27,8 @@ Follow this command:
 {{-- Input in laravel blade --}}
 <input type="file" name="your_name_for_input">
 
+$news->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', false(for store), $news->old_image_from_database(enter if the previous parameter is true), 'width', 'height');
+
 // Function to store your news and pictures
 public function store(Request $r)
 {
@@ -37,8 +39,6 @@ public function store(Request $r)
     
     // It is with crop image
     $input->image = StoreImage::store('your_input_name', 'yourDisk', $request, 'default-pictures.jpg', false, '', 100, 100);
-    
-    // First number is for width and second number is for height
     
     $input->save();
     return redirect()->route('news.index'); // This is my route. You can use your route.
