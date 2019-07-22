@@ -11,12 +11,12 @@ class ImageFacades extends Facade
     {
         return 'StoreImage';
     }
-    protected static function store($input_file, $storage_disk, $request, $defaultPictures, $edit = false, $imageOld = '', $width = false, $height = false)
+    protected static function store($input_file, $storage_disk, $slug, $request, $defaultPictures, $edit = false, $imageOld = '', $width = false, $height = false)
     {
-        if ($request->hasFile($input_file)) 
+        if ($request->hasFile($input_file))
         {
             $image = $request->file($input_file);
-            $name = time() . '.' . $image->getClientOriginalExtension();
+            $name = $slug . '-' . time() . '.' . $image->getClientOriginalExtension();
             $makeImage = ($width && $height) ? Image::make($image)->fit($width, $height) : Image::make($image);
             $path = Storage::disk($storage_disk)->path($name);
             if(Storage::disk($storage_disk)->put($name, $makeImage->save($path)))
@@ -25,7 +25,7 @@ class ImageFacades extends Facade
                 {
                     Storage::disk($storage_disk)->exists($imageOld) ? Storage::disk($storage_disk)->delete($imageOld) : "";
                 }
-                return $name;  
+                return $name;
             }
         }
         else
