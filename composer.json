@@ -16,6 +16,7 @@
         "illuminate/config": "5.8.*",
         "illuminate/support": "5.8.*",
         "illuminate/filesystem": "5.8.*",
+        "illuminate/http" : "5.8.*",
         "intervention/image" : "2.5.1"
     },
     "autoload": {
