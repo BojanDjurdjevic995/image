@@ -21,6 +21,7 @@ class ImageServiceProvider extends ServiceProvider
     {
         //
     }
+
     public function provides()
     {
         return ['StoreImage'];

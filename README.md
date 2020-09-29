@@ -1,7 +1,3 @@
-Before installing this package, install Intervention Image
-```
-composer require intervention/image
-```
 Require this package with composer:
 ```
 composer require baki/image

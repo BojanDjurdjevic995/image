@@ -11,6 +11,7 @@ class ImageFacades extends Facade
     {
         return 'StoreImage';
     }
+
     protected static function store($input_file, $storage_disk, $slug, $request, $defaultPictures, $edit = false, $imageOld = '', $width = false, $height = false)
     {
         if ($request->hasFile($input_file))
@@ -21,16 +22,12 @@ class ImageFacades extends Facade
             $path = Storage::disk($storage_disk)->path($name);
             if(Storage::disk($storage_disk)->put($name, $makeImage->save($path)))
             {
-                if($edit && $imageOld != NULL && $imageOld != $defaultPictures)
-                {
-                    Storage::disk($storage_disk)->exists($imageOld) ? Storage::disk($storage_disk)->delete($imageOld) : "";
-                }
+                if($edit && $imageOld != NULL && $imageOld != $defaultPictures && Storage::disk($storage_disk)->exists($imageOld))
+                    Storage::disk($storage_disk)->delete($imageOld);
+
                 return $name;
             }
         }
-        else
-        {
-            return $edit ? $imageOld : $defaultPictures;
-        }
+        else return $edit ? $imageOld : $defaultPictures;
     }
 }
